@@ -6,15 +6,15 @@ type Tag = {
   name: string;
 }
 type TagListModel = {
-  data: Tag[]
-  fetch: () => Tag[]
+  data: Tag[]//data: string[]
+  fetch: () => Tag[]//箭头前是参数的输入类型，箭头后是输出结果的参数类型
   create: (name: string) => 'success' | 'duplicated' // 联合类型
   update: (id: string, name: string) => 'success' | 'not found' | 'duplicated'
   remove: (id: string) => boolean
-  save: () => void
+  save: () => void//不返回i
 }
-const tagListModel: TagListModel = {
-  data: [],
+const tagListModel: TagListModel = {//将type和变量关联起来 : TagListModel
+  data: [],//拿到data,没法写data类型，在line8声明dagListModel
   fetch() {
     this.data = JSON.parse(window.localStorage.getItem(localStorageKeyName) || '[]');
     return this.data;

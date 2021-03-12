@@ -4,9 +4,9 @@
       <button @click="create">新增标签</button>
     </div>
     <ul class="current">
-      <li v-for="tag in dataSource" :key="tag.id"
+      <li v-for="tag in dataSource" :key="tag"
           :class="{selected: selectedTags.indexOf(tag)>=0}"
-          @click="toggle(tag)">{{tag.name}}
+          @click="toggle(tag)">{{tag}}
       </li>
     </ul>
   </div>
@@ -29,7 +29,7 @@
       } else {
         this.selectedTags.push(tag);
       }
-      this.$emit('update:value', this.selectedTags);
+      this.$emit('update:value',this.selectedTags)
     }
 
     create() {
@@ -47,7 +47,6 @@
 
 <style lang="scss" scoped>
   .tags {
-    background: white;
     font-size: 14px;
     padding: 16px;
     flex-grow: 1;
